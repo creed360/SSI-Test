@@ -22,9 +22,5 @@ import re
 
 passwords = input('Input comma separated list of passwords: ')
 passwords = passwords.split(',')
-finalized_passwords=[]
-
-for passw in passwords:
-    if re.match(r'[A-Za-z0-9@#$=]{8,}', passw):
-        finalized_passwords.append(passw)
+finalized_passwords=[passw for passw in passwords if re.match(r'[A-Za-z0-9@#$=]{8,}', passw)]
 print(finalized_passwords)
