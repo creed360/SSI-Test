@@ -12,5 +12,6 @@ Hint: Use Regular expressions
 """
 import re
 examples = ["example (.com)", "w3resource", "github (.com)", "stackoverflow (.com)"]
+examples = ["example (.com) is just an example", "w3resource", "github (.com) is to keep repositories", "stackoverflow (.com) knows everything"]
 for example in examples:
-    print(re.sub(" (.*)","",example))
+    print(re.sub(" ([(].com[)])","",example))

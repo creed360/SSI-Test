@@ -23,8 +23,8 @@ import re
 passwords = input('Input comma separated list of passwords: ')
 passwords = passwords.split(',')
 finalized_passwords=[]
+
 for passw in passwords:
-    if len(passw) > 5 and len(passw) < 13:
-        if re.search('[a-z]',passw) and re.search('[A-Z]',passw) and re.search('[0-9]',passw) and re.search('[$#@]',passw):
-            finalized_passwords.append(passw)
+    if re.match(r'[A-Za-z0-9@#$=]{8,}', passw):
+        finalized_passwords.append(passw)
 print(finalized_passwords)
