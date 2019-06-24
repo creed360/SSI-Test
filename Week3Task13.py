@@ -4,30 +4,29 @@ Try this decorator on 3 different functions to check the execution time of each 
 """
 import timeit
 
-def test_func1():
-    return 10 ** 10
-
-def test_func2():
-    return 110 ** 11
-
-def test_func3():
-    return 220 ** 12
-
 #Defining Decorator
-def timee_decorator(func):
+def find_time(function):
 
     #This is the inner function.
     #It can access the function
     #passed as argument
-    def inner_func():
-        print(timeit.timeit(func))
+    def find_time_wrapper():
+        print(timeit.timeit(function))
 
-    return inner_func
+    return find_time_wrapper
 
-timee1=timee_decorator(test_func1)
-timee2=timee_decorator(test_func2)
-timee3=timee_decorator(test_func3)
+@find_time
+def test_func1():
+    return 10 ** 10
 
-timee1()
-timee2()
-timee3()
+@find_time
+def test_func2():
+    return 110 ** 11
+
+@find_time
+def test_func3():
+    return 220 ** 12
+
+test_func1()
+test_func2()
+test_func3()

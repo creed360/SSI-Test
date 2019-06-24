@@ -2,27 +2,26 @@
 (A singleton is a class with only one instance)
 """
 
-class abc:
-
-    def __init__(self):
-        print("Constructor")
-
-    def foo(self):
-        print("Class ABC")
-
-def singleton_decorator(clas):
+def make_singleton(clas):
 
     class_instances = {}
-    def inner():
+    def make_singleton_wrapper():
         if clas not in class_instances:
             class_instances[clas] = clas()
         return class_instances[clas]
-    return inner
+    return make_singleton_wrapper
 
-my_class=singleton_decorator(abc)
+@make_singleton
+class Person:
 
-object = my_class()
+    def __init__(self):
+        print("Person Constructor")
 
-#This time constructor will not be called
-object2 = my_class()
+    def speak(self):
+        print("Person Speaks")
 
+ali = Person()
+ali.speak()
+
+#This time constructor will not be called again
+ahmad = Person()
