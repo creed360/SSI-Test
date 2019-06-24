@@ -2,18 +2,7 @@
 
 Try this decorator on 3 different functions to check the execution time of each function
 """
-import timeit
-
-#Defining Decorator
-def find_time(function):
-
-    #This is the inner function.
-    #It can access the function
-    #passed as argument
-    def find_time_wrapper():
-        print(timeit.timeit(function))
-
-    return find_time_wrapper
+from decorators import find_time
 
 @find_time
 def test_func1():

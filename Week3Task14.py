@@ -1,15 +1,7 @@
 """Write a decorator which convert each class to Singleton class.
 (A singleton is a class with only one instance)
 """
-
-def make_singleton(clas):
-
-    class_instances = {}
-    def make_singleton_wrapper():
-        if clas not in class_instances:
-            class_instances[clas] = clas()
-        return class_instances[clas]
-    return make_singleton_wrapper
+from decorators import make_singleton
 
 @make_singleton
 class Person:
